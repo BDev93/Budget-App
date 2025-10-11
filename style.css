@@ -8,8 +8,15 @@
     background-color: green;
     width: 200px;
     height: 200px;
+    text-align: center;
 }
 #expenses {
     background-color: rgb(203, 50, 50);
     width: 200px;
+    text-align: center;
+}
+
+#input-add{
+    background-color: beige;
+    border: none;
 }
