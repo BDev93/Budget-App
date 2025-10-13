@@ -1,6 +1,10 @@
 *{
     background-color: gray;
 }
+h1{
+    text-align: center;
+}
+
 #container{
     display: flex;
 }
@@ -15,8 +19,19 @@
     width: 200px;
     text-align: center;
 }
+#input-add-container, #input-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
 
+#input-container{
+   
+    
+}
 #input-add{
+    margin: auto auto;
     background-color: beige;
     border: none;
 }
