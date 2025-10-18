@@ -17,10 +17,23 @@ addBtn.addEventListener('click', function(){
         return
     }
 
-    const selectRadio = document.querySelector('input[name="type"]:checked')
-    if(!selectRadio) {
+    const selectedRadio = document.querySelector('input[name="type"]:checked')
+    if(!selectedRadio) {
         alert("Wybierz Przychody lub Wydatki.")
         return
     }
+
+    const p = document.createElement('p');
+    const formatted = amount.toFixed(2);
+    p.textContent = (selectedRadio.value === 'revenues' ? '+ ' : '- ') + formatted;
+
+    if(selectedRadio.value === 'revenues') {
+        revenuesDiv.appendChild(p);        
+    }
+    else {
+        expensesDiv.appendChild(p);        
+    }
+
+    inputAdd.value = ""
 
 })
