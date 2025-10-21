@@ -1,10 +1,17 @@
 
 const addBtn = document.getElementById("add-btn")
 const inputAdd = document.getElementById("input-add")
+const inputName = document.getElementById("input-name")
 const revenuesDiv = document.getElementById("revenues")
 const expensesDiv = document.getElementById("expenses")
 
 addBtn.addEventListener('click', function(){
+    const nameStr = inputName.value.trim()
+    if(nameStr === ""){
+        alert("Wpisz nazwę przychodu lub wydatku.")
+        return
+    }
+    
     const valueStr = inputAdd.value.trim();
     if(valueStr === ""){
         alert("Wpisz kwotę.")
@@ -24,8 +31,9 @@ addBtn.addEventListener('click', function(){
     }
 
     const p = document.createElement('p');
-    const formatted = amount.toFixed(2);
-    p.textContent = (selectedRadio.value === 'revenues' ? '+ ' : '- ') + formatted;
+    const formatted = Math.round(amount);
+    p.textContent = (selectedRadio.value === 'revenues' ? '+ ' : '- ') + 
+    formatted + "zł"  +  " (" + nameStr +  ")";
 
     if(selectedRadio.value === 'revenues') {
         revenuesDiv.appendChild(p);        
@@ -35,5 +43,6 @@ addBtn.addEventListener('click', function(){
     }
 
     inputAdd.value = ""
+    inputName.value = ""
 
 })
