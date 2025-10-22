@@ -35,6 +35,16 @@ addBtn.addEventListener('click', function(){
     p.textContent = (selectedRadio.value === 'revenues' ? '+ ' : '- ') + 
     formatted + "zł"  +  " (" + nameStr +  ")";
 
+    const deleteBtn = document.createElement('button')
+    deleteBtn.textContent = "X"
+    deleteBtn.classList.add('delete-btn')
+
+    deleteBtn.addEventListener('click', () => {
+        p.remove();
+    })
+
+    p.appendChild(deleteBtn)
+
     if(selectedRadio.value === 'revenues') {
         revenuesDiv.appendChild(p);        
     }

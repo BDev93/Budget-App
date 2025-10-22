@@ -60,3 +60,15 @@ padding: 8px;
 #add-btn:hover{
     background-color: rgb(8, 160, 85);
 }
+
+.delete-btn{
+    margin-left: 10px;
+    background-color: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 100%;
+    cursor: pointer;    
+}
+.delete-btn:hover{
+    background-color: #cc0000;
+}
