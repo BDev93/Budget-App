@@ -2,8 +2,13 @@
 const addBtn = document.getElementById("add-btn")
 const inputAdd = document.getElementById("input-add")
 const inputName = document.getElementById("input-name")
-const revenuesDiv = document.getElementById("revenues")
-const expensesDiv = document.getElementById("expenses")
+
+const revenuesList = document.getElementById("revenues-list")
+const expensesList = document.getElementById("expenses-list")
+
+const revenuesTotalDisplay = document.getElementById("revenues-total")
+const expensesTotalDisplay = document.getElementById("exenses-total")
+const balanceDisplay = document.getElementById("balance")
 
 addBtn.addEventListener('click', function(){
     const nameStr = inputName.value.trim()
