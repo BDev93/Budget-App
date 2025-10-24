@@ -7,8 +7,35 @@ const revenuesList = document.getElementById("revenues-list")
 const expensesList = document.getElementById("expenses-list")
 
 const revenuesTotalDisplay = document.getElementById("revenues-total")
-const expensesTotalDisplay = document.getElementById("exenses-total")
+const expensesTotalDisplay = document.getElementById("expenses-total")
 const balanceDisplay = document.getElementById("balance")
+
+let revenuesSum = 0;
+let expensesSum = 0;
+
+function updateTotals() {
+    revenuesTotalDisplay.textContent = "Suma: " + revenuesSum + "zł"
+    expensesTotalDisplay.textContent = "Suma: " + revenuesSum + "zł"
+    const balance = revenuesSum - expensesSum
+    balanceDisplay.textContent = balance + " zł"
+}
+
+function createEntry(type, amount, name) {
+    const p = document.createElement('p')
+
+    p.dataset.amount = amount
+    p.dataset.type = type
+
+    p.textContent = (type === 'revenues' ? '+ ' : '- ') + amount + 
+    "zł (" + name + ")"
+
+    const deleteBtn = document.createElement('button')
+    deleteBtn.textContent = "X"
+    deleteBtn.classList.add('delete-btn')
+
+    
+}
+
 
 addBtn.addEventListener('click', function(){
     const nameStr = inputName.value.trim()
