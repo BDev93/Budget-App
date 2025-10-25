@@ -33,7 +33,25 @@ function createEntry(type, amount, name) {
     deleteBtn.textContent = "X"
     deleteBtn.classList.add('delete-btn')
 
-    
+    deleteBtn.addEventListener('click', function(){
+        const amt = Number(p.dataset.amount)
+        const t = p.dataset.type
+        if (t === 'revenues') {
+            revenuesSum -= amt
+            if (revenuesSum < 0) revenuesSum = 0 
+        } else {
+            expensesSum -= amt
+            if (expensesSum < 0) expensesSum = 0
+        }
+        p.remove()
+        updateTotals()
+
+    })
+
+    p.appendChild(deleteBtn)
+    return p
+
+
 }
 
 
