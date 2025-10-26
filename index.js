@@ -15,7 +15,7 @@ let expensesSum = 0;
 
 function updateTotals() {
     revenuesTotalDisplay.textContent = "Suma: " + revenuesSum + "zł"
-    expensesTotalDisplay.textContent = "Suma: " + revenuesSum + "zł"
+    expensesTotalDisplay.textContent = "Suma: " + expensesSum + "zł"
     const balance = revenuesSum - expensesSum
     balanceDisplay.textContent = balance + " zł"
 }
@@ -68,11 +68,13 @@ addBtn.addEventListener('click', function(){
         return
     }
 
-    const amount = parseFloat(valueStr.replace(',', '.'))
+    let amount = parseFloat(valueStr.replace(',', '.'))
     if(isNaN(amount)){
         alert('Podaj poprawną liczbę (np. 123.45')
         return
     }
+
+    amount = Math.round(amount)
 
     const selectedRadio = document.querySelector('input[name="type"]:checked')
     if(!selectedRadio) {
@@ -80,27 +82,27 @@ addBtn.addEventListener('click', function(){
         return
     }
 
-    const p = document.createElement('p');
-    const formatted = Math.round(amount);
-    p.textContent = (selectedRadio.value === 'revenues' ? '+ ' : '- ') + 
-    formatted + "zł"  +  " (" + nameStr +  ")";
+    const type = selectedRadio.value 
 
-    const deleteBtn = document.createElement('button')
-    deleteBtn.textContent = "X"
-    deleteBtn.classList.add('delete-btn')
-
-    deleteBtn.addEventListener('click', () => {
-        p.remove();
-    })
-
-    p.appendChild(deleteBtn)
-
-    if(selectedRadio.value === 'revenues') {
-        revenuesDiv.appendChild(p);        
+    if(type === 'revenues') {
+        revenuesSum += amount
+    } else {
+        expensesSum += amount
     }
-    else {
-        expensesDiv.appendChild(p);        
+
+    const entry = createEntry(type, amount, nameStr)
+
+    if (type === 'revenues') {
+        revenuesList.appendChild(entry)
+    } else {
+        expensesList.appendChild(entry)
     }
+
+    updateTotals()
+
+   
+
+  
 
     inputAdd.value = ""
     inputName.value = ""
