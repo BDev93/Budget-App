@@ -72,3 +72,18 @@ padding: 8px;
 .delete-btn:hover{
     background-color: #cc0000;
 }
+
+#expenses-total, #expenses-list{
+    background-color: rgb(203, 50, 50);
+}
+#expenses p {
+    background-color: rgb(203, 50, 50);
+}
+
+#revenues-total, #revenues-list{
+    background-color: green;
+}
+
+#revenues p {
+    background-color: green;
+}
